@@ -18,19 +18,19 @@ namespace P326FirstApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(int page,string search)
+        public IActionResult GetAll(int page)
         {
-            var products = _appDbContext.Products
-                .Where(p=>!p.IsDeleted)
-                .Skip(page-1)*8)
-                .Take(2)
-                .ToList();
+            var query = _appDbContext.Products
+                 .Where(p => !p.IsDeleted);
+
             ProductListDto productListDto = new();
 
-            productListDto.TotalCount= products.Count;
-            productListDto.Items = products.Select(p => new ProductListItemDto
-            {
-
+            productListDto.TotalCount= query.Count();
+            productListDto.CurrentPage= page;
+            productListDto.Items = query.Skip((page-1)*2)
+                .Take(2)
+                .Select(p=>new ProductListItemDto
+                 {
                 Name = p.Name,
                 CostPrice = p.CostPrice,
                 SalePrice = p.SalePrice,

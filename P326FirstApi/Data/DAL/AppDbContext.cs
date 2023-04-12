@@ -14,6 +14,7 @@ namespace P326FirstApi.Data.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+        
             base.OnModelCreating(modelBuilder);
         }
 
