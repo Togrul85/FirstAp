@@ -10,11 +10,13 @@ namespace P326FirstApi.Data.DAL
         {
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
-        
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
 

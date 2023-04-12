@@ -29,7 +29,7 @@ namespace P326FirstApi.Controllers
             productListDto.CurrentPage= page;
             productListDto.Items = query.Skip((page-1)*2)
                 .Take(2)
-                .Select(p=>new ProductListItemDto
+                .Select(p=>new CategoryListItemDto
                  {
                 Name = p.Name,
                 CostPrice = p.CostPrice,
@@ -38,7 +38,7 @@ namespace P326FirstApi.Controllers
                 UpdateDate = p.UpdateDate,
 
             }).ToList();
-            List<ProductListItemDto> listItemDtos = new();
+            List<CategoryListItemDto> listItemDtos = new();
            
             productListDto.Items= listItemDtos;
             return StatusCode(200, productListDto);

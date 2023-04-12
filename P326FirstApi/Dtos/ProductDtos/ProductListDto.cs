@@ -6,6 +6,6 @@ namespace P326FirstApi.Dtos.ProductDtos
     {
 public int TotalCount { get; set; }
         public int CurrentPage { get; set; }
-        public List<ProductListItemDto> Items { get; set; }
+        public List<CategoryListItemDto> Items { get; set; }
     }
 }
